@@ -131,6 +131,22 @@ def RSAEncryptionSystem(p,q,e,m):
     return c, m
 
 
+def chineseRemainderTheorem(a,b,N,M):
+    """a and b are the two numbers, N and M are the moduli, expects N and M to be coprime"""
+    print("The two numbers are " + str(a) + " and " + str(b))
+    print("The two moduli are " + str(N) + " and " + str(M))
+    T=pow(M,-1,N)
+    T2=pow(N,-1,M)
+    print("The value of T is " + str(T) + " and " + str(T2))
+    x=(M*T*a+N*T2*b)%(N*M)
+    print("The solution is " + str(x))
+    
+    return x
+
+
+
+
+#chineseRemainderTheorem(4,3,7,5)
 #              n    e c
 #RSABruteForce(9307,3,4151)
 #              n  e  c
@@ -144,7 +160,7 @@ def RSAEncryptionSystem(p,q,e,m):
 #coprimeElements(55)
 #primitiveElements(400)
 #print(isPrime(41))
-print(trial_division(64))
+#print(trial_division(64))
 #                          p  g a b 
 #diffieHellmannKeyExchange(17,3,3,5)
 
