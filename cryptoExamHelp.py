@@ -1,14 +1,26 @@
 import math
+import random
 from Crypto.Util.number import isPrime
+
+
+
 def coprimeElements(N):
-    """N is the number to find the coprime elements of"""
+    """N is the number to find a list of coprime elements, these are also the element counted by phi"""
+    n = []
+    for i in range(1, N):
+        if math.gcd(i, N) == 1:
+            n.append(i)
+    print("The list of coprime elements is ")
+    print(n)
+    return n 
+
+def coprimeElementsAmount(N):
+    """N is the number to find the coprime elements of, it also gives back phi"""
     n = 0
     for i in range(1, N):
         if math.gcd(i, N) == 1:
             n=n+1
-            print("Number is "+ str(n) + " The point is " + str(i))
     print("The number of primitive elements is " + str(n))
-
 
 
 # find all primitive elements of Z_N
@@ -139,14 +151,12 @@ def chineseRemainderTheorem(a,b,N,M):
     T2=pow(N,-1,M)
     print("The value of T is " + str(T) + " and " + str(T2))
     x=(M*T*a+N*T2*b)%(N*M)
-    print("The solution is " + str(x))
-    
+    print("The solution is " + str(x) + " mod " + str(N*M))
     return x
 
 
 
-
-#chineseRemainderTheorem(4,3,7,5)
+#chineseRemainderTheorem(3,7,9,13)
 #              n    e c
 #RSABruteForce(9307,3,4151)
 #              n  e  c
@@ -157,10 +167,14 @@ def chineseRemainderTheorem(a,b,N,M):
 #RSAEncryptionSystem(53,59,3,4151)
 #                           a  b
 #extendedEuclideanAlgorithm(17,41)
-#coprimeElements(55)
+#print(phi(16))
+#coprimeElements(17)
+#coprimeElementsAmount(17)
 #primitiveElements(400)
 #print(isPrime(41))
 #print(trial_division(64))
 #                          p  g a b 
 #diffieHellmannKeyExchange(17,3,3,5)
 
+
+#s='s=%r;print(s%%s)';print(s%s)
