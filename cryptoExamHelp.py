@@ -2,8 +2,6 @@ import math
 import random
 from Crypto.Util.number import isPrime
 
-
-
 def coprimeElements(N):
     """N is the number to find a list of coprime elements, these are also the element counted by phi"""
     n = []
@@ -21,6 +19,25 @@ def coprimeElementsAmount(N):
         if math.gcd(i, N) == 1:
             n=n+1
     print("The number of primitive elements is " + str(n))
+
+
+def discreteLogarithm(p,g,h):
+    """p is the prime number, g is the generator, h is the element to find the discrete logarithm of, if h is 1 then it will find the order of g"""
+    list = []
+    for i in range(1,100):
+        gPow = pow(g,i,p)
+        list.append(gPow)
+        if(gPow==h):
+            printListTable(list)
+            return i
+
+def printListTable(n):
+    """n is the list to print as a table"""
+    for i in range(1,len(n)+1):
+        print(str(i) + "\t", end="")
+    print()
+    for i in n:
+        print(str(i) + "\t", end="")
 
 
 # find all primitive elements of Z_N
@@ -154,6 +171,9 @@ def chineseRemainderTheorem(a,b,N,M):
     print("The solution is " + str(x) + " mod " + str(N*M))
     return x
 
+
+
+discreteLogarithm(17,3,1)
 
 
 #chineseRemainderTheorem(3,7,9,13)
