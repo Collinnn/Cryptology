@@ -55,6 +55,9 @@ def primitiveElements(N): #Fixed ^T
 def primitiveElementFinder(N):
     list = []
     primitiveElementList = []
+    #Prints the number of primitive elements
+    coprimeElementsAmount(coprimeElementsAmount(13))
+    print()
     list = coprimeElements(N)
     orderList = []
     for i in list:
