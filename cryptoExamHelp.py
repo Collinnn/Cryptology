@@ -19,6 +19,7 @@ def coprimeElementsAmount(N):
         if math.gcd(i, N) == 1:
             n=n+1
     print("The number of primitive elements is " + str(n))
+    return n
 
 
 def discreteLogarithm(p,g,h):
@@ -43,18 +44,34 @@ def printListTable(n):
 # find all primitive elements of Z_N
 def primitiveElements(N): #Fixed ^T
     """N is the number to find the primitive elements of"""
-    k = 100
-    
-    listN = []
-    for i in range(1, N-1):
-        found = False
-        for j in range(1, k):
-            if math.pow(i,j)%N == 0:
-                found = True
-                break
-        if not found:
-            listN.append(i)
-    print(listN)
+    #Prints the number of primitive elements
+    coprimeElementsAmount(coprimeElementsAmount(13))
+    # Coprime elements of N
+    required_set = {num for num in range(1, N) if math.gcd(num, N) }
+    # Elements that are primitive of N
+    return [g for g in range(1, N) if required_set == {pow(g, powers, N)
+            for powers in range(1, N)}]
+
+def primitiveElementFinder(N):
+    list = []
+    primitiveElementList = []
+    list = coprimeElements(N)
+    orderList = []
+    for i in list:
+        for j in range(1,N):
+            if (j == N-1):
+                if(pow(i,j,N) == 1):
+                    orderList.append(j)
+                    primitiveElementList.append(i)
+                    break
+            else:
+                if(pow(i,j,N) == 1):
+                    orderList.append(j)
+                    break
+    printListTable(orderList)
+    print()      
+    print("The primitive elements are the following" + str(primitiveElementList))
+
     
 
 def trial_division(n: int) -> "list[int]":
@@ -173,7 +190,7 @@ def chineseRemainderTheorem(a,b,N,M):
 
 
 
-discreteLogarithm(17,3,1)
+#discreteLogarithm(17,3,1)
 
 
 #chineseRemainderTheorem(3,7,9,13)
@@ -189,8 +206,13 @@ discreteLogarithm(17,3,1)
 #extendedEuclideanAlgorithm(17,41)
 #print(phi(16))
 #coprimeElements(17)
-#coprimeElementsAmount(17)
-#primitiveElements(400)
+#coprimeElementsAmount(55)
+#coprimeElementsAmount(coprimeElementsAmount(13))
+#print(primitiveElements(13))
+
+primitiveElementFinder(13)
+
+#primitiveElements(11)
 #print(isPrime(41))
 #print(trial_division(64))
 #                          p  g a b 
