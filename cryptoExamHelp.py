@@ -56,7 +56,7 @@ def primitiveElementFinder(N):
     list = []
     primitiveElementList = []
     #Prints the number of primitive elements
-    coprimeElementsAmount(coprimeElementsAmount(13))
+    coprimeElementsAmount(coprimeElementsAmount(N))
     print()
     list = coprimeElements(N)
     orderList = []
